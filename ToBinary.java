@@ -9,7 +9,7 @@ public class ToBinary{
 
 class Convert{	
 	int[] arr = new int [8];
-	int top = 7;
+	int top = 0;
 	
 	Convert(Integer x){
 		for(int i = 7 ; i >= 0 ; i--){
@@ -23,10 +23,10 @@ class Convert{
 	}
 
 	public void push(int x){
-		System.out.println("Pushing " + x + " at index " + (7-top));
-		arr[top] = x;
-		if(top > 0)
-			top--;
+		System.out.println("Pushing " + x + " at index " + top);
+		arr[7-top] = x;
+		if(top < 7)
+			top++;
 	}
 
 	public int pop(){
@@ -35,7 +35,7 @@ class Convert{
 			res = (int)Math.pow(2, top);
 		System.out.println("Pooping " + res + " from index " + top);
 		if(top < 8)
-			top++;
+			top--;
 		return res; 
 	}
 
@@ -45,5 +45,12 @@ class Convert{
 			res = res + this.pop();
 		}
 		return res;
+	}
+
+	public void print(){
+		System.out.println("value || idx ");
+		for(int i = top ; i >= 0 ; i--){
+			System.out.println(arr[i] + "||" + i);
+		}
 	}
 }
